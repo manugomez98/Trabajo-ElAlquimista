@@ -1,0 +1,41 @@
+import example.*
+// coloco import y el nombre del archivo en el que tengo el programa con *
+describe "Alquimista Test" {
+
+	//fixture{
+		//alquimista.agregarItem(bomba)
+	//} hace que la bomba apareza en todos los test
+	
+	test "Un alquimista tiene criterio si no tiene items de combate" {
+		
+		assert.that(alquimista.tieneCriterio())
+		
+	}
+	
+	test "Un alquimista tiene criterio teniendo items de combate" {
+		alquimista.agregarItem(bomba)
+		assert.that(alquimista.tieneCriterio())
+		
+	}
+	test "Un alquimista no tiene criterio" {
+		alquimista.agregarItem(pocion)
+		assert.notThat(alquimista.tieneCriterio())
+		
+	}
+	
+	test "Un alquimista es buen explorador" {
+		alquimista.agregarItemDeExploracion("red")
+		alquimista.agregarItemDeExploracion("")
+		alquimista.agregarItemDeExploracion("")
+		assert.that(alquimista.esBuenExplorador())
+	}
+	test "Un alquimista no es buen explorador" {
+		assert.notThat(alquimista.esBuenExplorador())
+	}
+	test "Capacidad ofensiva de un alquimista es 100"{
+		alquimista.agregarItem(bomba)
+		alquimista.agregarItem(pocion)
+		assert.equals(100 ,alquimista.capacidadOfensiva())
+	}
+
+}
